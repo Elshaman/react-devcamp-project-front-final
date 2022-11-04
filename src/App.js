@@ -1,51 +1,25 @@
-import React from 'react';
-import './App.css';
-import axios from 'axios';
-
-class App extends React.Component {
-    
-  //constructor de la clase 
-  constructor(props){
-      super(props)
-      this.state={
-        users: [],
-        currentUser: {}
-      }
-      this.updateCurrentPlayer = this.updateCurrentPlayer.bind(this)
-    }
-
-    //metodo de estado: componentDidMount
-    componentDidMount(){
-      const url = 'http://localhost:5050/api/v1/bootcamps'
-      axios.get(url)
-        .then((response)=>{
-          this.setState({
-            users: response.data
-          })
-        })
-        .catch((error)=>{
-          console.log(error)
-        })
-    }
+import React from "react";
+//import pages
+import Users from "./pages/Users";
+import Bootcamps from "./pages/Bootcamps";
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 
 
-    updateCurrentPlayer(item){
-      this.setState({
-        currentUser: item
-      })
-    }
-
-
-
-    render(){
-      return(
-        <>My APP</>
-      )
-    }
-
-
-
-
+function App(){
+  return (
+    <>
+        <Router>
+          <div className="container">
+              <Routes>
+              <Route path='/users' element={ <Users /> } />
+              <Route path='/bootcamps' element={ <Bootcamps /> } />
+              </Routes>
+          </div>
+        </Router>
+    </>
+  )
+ 
 }
 
-export default App;
+
+export default App
