@@ -1,0 +1,55 @@
+<h1>Clases y estilos </h1>
+<input type="text" required #nameInput2="ngModel"  [(ngModel)]="name" />
+<p class="message-error" [class.invalid]="nameInput2.invalid">
+  el campo es requerido
+</p>
+<label>Nombre</label>
+<input type="text" required #nameInput3="ngModel"  [(ngModel)]="name" />
+<p [style.font-style]="nameInput3.invalid ? 'italic' : 'normal' ">Texto texto</p>
+<hr>  
+<h1>Lista de productos ngfor array</h1>
+<div class="products--grid">
+    <div *ngFor="let p of products">
+        <p>{{p.name}}</p>
+        <p>{{p.price}}</p>
+    </div>
+</div>
+<hr>
+<h1>NgFor</h1>
+<button (click)="addNameInArray()">add name</button>
+<input type="text" [(ngModel)]="newName" />
+<ul>
+  <li *ngFor="let name of names; index as i">
+    {{ name }}
+    <button (click)="deleteNameFromArray(i)">Borrar</button>
+  </li>
+</ul>
+<hr>
+<h1> ngif </h1>
+<p *ngIf="name==='shaman' && age ===18; else myBlock">my contennt</p>
+<ng-template #myBlock>
+  <p>Usuario invitado</p>
+</ng-template>
+<input required type="text" [(ngModel)]="name" >
+<hr>
+<h1>NgModel</h1>
+<p>nombre: {{ name }}</p>
+<input #nameInput="ngModel" required type="text" [(ngModel)]="name" >
+<p>Valid:{{ nameInput.valid }}</p>
+<input #ageInput="ngModel" required type="number" [(ngModel)]="age" >
+<p>Age:{{ age }}</p>
+<hr>
+<h1>Eventos</h1>
+<button id="era" [disabled]="btnDisabled"> Enviar </button>
+<button (click)="activar()">Activar </button>
+<p>Edad: {{ age }}</p>
+<button (click)="incrementarEdad()"> Age ++  </button>
+<input type="text" [value]="name" (keyup)="cambiarNombre($event)">
+<hr>
+<h1>propiedades</h1>
+<button [disabled]="btnDisabled"> Enviar </button>
+<input type="text" [value]="name">
+<hr />
+<h1>Hola </h1>
+<h2>{{ "Hola mundo".repeat(5) }}</h2>
+<p>Soy {{ name }}</p>
